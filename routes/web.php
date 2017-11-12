@@ -49,7 +49,11 @@ Route::get('/AjaxGet2/demo4', function () {
 Route::get('/AjaxPost', function () {
     return view('AjaxPost');
 });
-Route::post('/AjaxPost/demo1', 'AjaxController@index');
+Route::POST('/AjaxPost/demo1', 'AjaxController@store');
+//Route::POST('/AjaxPost/demo1', function () {
+//    return view('demoPost1_test');
+//});
+
 
 Route::post('/AjaxPost/demo2', function () {
     return view('demoPost2_test');

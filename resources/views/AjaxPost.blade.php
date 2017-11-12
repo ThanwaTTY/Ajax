@@ -7,13 +7,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     function myFunction(routes) {
+        alert('/AjaxPost/'+routes);
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         $.ajax({
+ 
             url: '/AjaxPost/'+routes,
             type: 'POST',
             data:   {
                         name:'Thanwa',
                         city:'Ayutthaya',
-                        '_token':$('input[name=_token]').val()
+                        token:$('input[name=_token]').val()
                     },
             cache: false,
             success: function(data){
@@ -24,6 +31,13 @@
 </script>
 </head>
 <body>
+<!-- <form action="/AjaxPost/demo1" method="post">
+<input type="hidden" name="_token" value="MZLGiDHDfLLGhu7syz1xkRhFiUWI41idSAxq8XIU">
+<label for="name">Name :</label>
+<input type="text" name="name" id="name">
+<input type="submit" value="บันทึก">
+</form> -->
+
 
 <!-- <button >Send an HTTP GET request to a page and get the result back</button> -->
 <button onclick="myFunction('demo1')">Demo One!</button>
